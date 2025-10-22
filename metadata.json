@@ -1,0 +1,5 @@
+{
+  "name": "Copy of SQLite3 Fuzzing Dashboard",
+  "description": "A web-based dashboard to orchestrate and visualize comprehensive security and robustness testing of SQLite3. It simulates grammar-based and mutation-based fuzzing, monitors code coverage, and reports on discovered vulnerabilities.",
+  "requestFramePermissions": []
+}
