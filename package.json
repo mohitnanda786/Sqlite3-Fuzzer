@@ -1,5 +1,5 @@
 {
-  "name": "copy-of-sqlite3-fuzzing-dashboard",
+  "name": "sqlite3-fuzzing-dashboard",
   "private": true,
   "version": "0.0.0",
   "type": "module",

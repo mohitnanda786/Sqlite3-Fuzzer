@@ -1,20 +1,31 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# SQLite3 Fuzzing Dashboard
 
-# Run and deploy your AI Studio app
+A React + TypeScript dashboard for planning and presenting a fuzzing campaign against SQLite3. You configure a run (strategy, duration, targets), then watch a live view of coverage, executions and crashes, and finish with a report that shows each crash's severity, AddressSanitizer summary, stack trace and a reproducible SQL test case.
 
-This contains everything you need to run your app locally.
+Built as a companion to my SWEN90006 (Security & Software Testing, University of Melbourne) assignment, in which our team fuzz-tested SQLite with mutation-based, generation-based and coverage-guided fuzzing.
 
-View your app in AI Studio: https://ai.studio/apps/drive/11JNNOhYBcxf7r0qjQXIgLxjOYWesHY3b
+> **Note: the results are simulated.** This app does not run SQLite or a fuzzer. It asks Google Gemini to generate a plausible campaign (coverage curve, execution counts, crashes) from your configuration, so you can prototype the reporting UI. None of the crashes shown are real SQLite bugs.
 
-## Run Locally
+## Stack
 
-**Prerequisites:**  Node.js
+- React 19, TypeScript, Vite
+- Recharts for the coverage and execution charts
+- Google Gemini (`@google/genai`) with a JSON response schema for the simulated run
 
+## Run locally
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Prerequisite: Node.js.
+
+1. Install dependencies: `npm install`
+2. Put your Gemini API key in `.env.local` as `GEMINI_API_KEY=...`
+3. Start the dev server: `npm run dev`
+
+## Layout
+
+| Path | What it is |
+| --- | --- |
+| `components/SetupForm.tsx` | Campaign configuration form |
+| `components/Dashboard.tsx` | Live view of coverage, executions and crashes |
+| `components/ReportView.tsx` | Final report with per-crash detail |
+| `services/geminiService.ts` | Generates the simulated campaign through Gemini |
+| `types.ts` | Shared types for config, crashes and reports |
